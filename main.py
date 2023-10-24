@@ -6,6 +6,20 @@ def encode_password(password):
     return encoded_password
 
 
+def decode_password(number):
+    new_num = ''
+
+    for digit in str(number):
+        if int(digit) >= 3:
+            digit = int(digit) - 3
+            new_num += str(digit)
+        else:
+            digit = int(digit) + 7
+            new_num += str(digit)
+
+    return int(new_num)
+
+
 def main():
     while True:
         print("Menu")
@@ -24,8 +38,9 @@ def main():
             if not encoded_password:
                 print("Please encode a password first.")
             else:
+                decoded_password = decode_password(encoded_password)
                 print(
-                    f"The encoded password is {encoded_password}, and the original password is ...")
+                    f"The encoded password is {encoded_password}, and the original password is {decoded_password}")
         elif choice == "3":
             break
         else:
